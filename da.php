@@ -49,7 +49,7 @@ $filedata = glob("$path"."*");//获取原始目录数组
 $path=mb_convert_encoding($path,'UTF-8',$system_coding);//将目录由系统编码转换为UTF-8编码
 $filedata=@array_coding_to_utf8($filedata,$system_coding);//转换文件数组
 $imagearray=array('jpg','JPG','jpeg','JPEG','gif','GIF','png','PNG','bmp','BMP','RGB','rgb');//建立一个图片后缀数组
-$textarray=array('php','js','css','asp','txt','php5','sh','bat','c','html','htm','conf','config',,,'wml','xhtml','xhtm','log','ini','inc','con','cfg','jsp','phtml','java','xml','bsh','py','pm','pl','sql','vb','vbs','tex','nfo');//建立一个图片后缀数组
+$textarray=array('php','js','css','asp','txt','php5','sh','bat','c','html','htm','conf','config','wml','xhtml','xhtm','log','ini','inc','con','cfg','jsp','phtml','java','xml','bsh','py','pm','pl','sql','vb','vbs','tex','nfo');//建立一个图片后缀数组
 ?>
   <div class="pageTit"><span>文件管理</span>» <a class="tree" href="index.php">文件管理</a> » <a class="tree" href=""><?php echo $path?></a><?php echo $nopross?></div>
 
