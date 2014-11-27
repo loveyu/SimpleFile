@@ -94,13 +94,15 @@ function codinglist($coding='UTF-8') {
  function bmtxt($t) {
     ##引用自hu60，将文本以html源方式输出
     $t = str_replace(array("\r","\n"),array('&#13;','&#10;'),htmlspecialchars($t,ENT_QUOTES,"utf-8"));
-    /*$tns=array();
+    /*
+	$tns=array();
     $n=count($tns);
     for($a=$n-1;$a>0;$a=$a-2)
     {
     $b=$a-1;
     $t=preg_replace($tns[$a],$tns[$b],$t);
-    }*/
+    }
+	*/
     return $t;
  }
 
