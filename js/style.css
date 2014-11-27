@@ -16,7 +16,7 @@ form { margin: 0; }
 	padding-bottom: 8px;
 	padding-left: 35px;
 	border: 1px dotted #F8CE6D;
-	background-image: url(/IMG_TIPS);
+	background-image: url(/IMG_TIPS.gif);
 	background-repeat: no-repeat;
 	background-position: 8px 5px;
 }
@@ -38,7 +38,7 @@ div#main_contents {
   border: 1px solid #777;
 }
 div#main_top {
-  background-image: url(IMG_SKIN_HEADER_BG);
+  background-image: url(IMG_SKIN_HEADER_BG.gif);
   background-color: #174270;
   background-repeat: repeat-x;
   height: 90px;
@@ -93,7 +93,7 @@ div#top_user a:hover {
   text-decoration: none;
 }
 div#main_bottom {
-  background-image: url(IMG_FOOTER_BG);
+  background-image: url(IMG_FOOTER_BG.gif);
   background-color: #174270;
   background-repeat: repeat-x;
   height: 40px;
@@ -169,15 +169,15 @@ div#level_menu a:hover {
   margin-top: -3px;
   line-height: 28px;
 }
-div#level_menu a.lladmin { background-image: url(IMG_LV_BT_ADMIN); }
-div#level_menu a.llreseller { background-image: url(IMG_LV_BT_RESELLER); }
-div#level_menu a.lluser { background-image: url(IMG_LV_BT_USER); }
+div#level_menu a.lladmin { background-image: url(IMG_LV_BT_ADMIN.gif); }
+div#level_menu a.llreseller { background-image: url(IMG_LV_BT_RESELLER.gif); }
+div#level_menu a.lluser { background-image: url(IMG_LV_BT_USER.gif); }
 
-div#top_menu a.lhome { background-image: url(IMG_MENU_HOME); }
-div#top_menu a.lwmail { background-image: url(IMG_MENU_WEBMAIL); }
-div#top_menu a.lfiles { background-image: url(IMG_MENU_FILEMAN); }
-div#top_menu a.lpass { background-image: url(IMG_MENU_PASSWORD); }
-div#top_menu a.lhelp { background-image: url(IMG_MENU_HELP); }
+div#top_menu a.lhome { background-image: url(IMG_MENU_HOME.gif); }
+div#top_menu a.lwmail { background-image: url(IMG_MENU_WEBMAIL.gif); }
+div#top_menu a.lfiles { background-image: url(IMG_MENU_FILEMAN.gif); }
+div#top_menu a.lpass { background-image: url(IMG_MENU_PASSWORD.gif); }
+div#top_menu a.lhelp { background-image: url(IMG_MENU_HELP.gif); }
 div#leftPanel {
   display: block;
   float: left;
@@ -305,7 +305,7 @@ a.micon:link, a.micon:active, a.micon:visited,
   background-color: #ffffff;
   padding: 0;
   background-repeat: repeat-x;
-  background-image: url(IMG_PBOX_BG);
+  background-image: url(IMG_PBOX_BG.gif);
   background-position: center 27px;
   border: 1px solid #ccc;
   border-top: none;
@@ -313,7 +313,7 @@ a.micon:link, a.micon:active, a.micon:visited,
 .panelBox .title {
   background-position: right center;
   background-repeat: repeat-x;
-  background-image: url(IMG_PBOX_BGR);
+  background-image: url(IMG_PBOX_BGR.gif);
   background-color: #165d8c;
   color: #fff;
   height: 27px;
@@ -326,7 +326,7 @@ a.micon:link, a.micon:active, a.micon:visited,
 .panelBox .title span {
   background-position: left top;
   background-repeat: no-repeat;
-  background-image: url(IMG_PBOX_BGL);
+  background-image: url(IMG_PBOX_BGL.gif);
   line-height: 27px;
   font-weight: bold;
   font-size: 11px;
@@ -364,7 +364,7 @@ a.micon:link, a.micon:active, a.micon:visited,
   padding: 0;
 }
 .panelBox ul li {
-  background-image: url(IMG_DOT_L);
+  background-image: url(IMG_DOT_L.gif);
   background-position: 2px center;
   background-repeat: no-repeat;
   list-style: none;
@@ -397,12 +397,12 @@ a.micon:link, a.micon:active, a.micon:visited,
   display: block;
   height: 14px;
   width: 130px;
-  background-image: url(/IMG_BARUSAGE0);
+  background-image: url(/IMG_BARUSAGE0.gif);
   margin: 0;
   float:left;
 }
 .usagebar .in {
-  background-image: url(/IMG_BARUSAGE1);
+  background-image: url(/IMG_BARUSAGE1.gif);
   display: block;
   height: 14px;
   background-position: left;
@@ -427,18 +427,18 @@ a.micon:link, a.micon:active, a.micon:visited,
   display: block;
   height: 14px;
   width: 45px;
-  background-image: url(/IMG_MINBARUSAGE0);
+  background-image: url(/IMG_MINBARUSAGE0.gif);
   margin: 0;
   float:left;
 }
 .minusagebar .in {
-  background-image: url(/IMG_MINBARUSAGE1);
+  background-image: url(/IMG_MINBARUSAGE1.gif);
   display: block;
   height: 14px;
   background-position: left;
 }
 .minusagebar.red .in {
-  background-image: url(/IMG_MINBARUSAGE2);
+  background-image: url(/IMG_MINBARUSAGE2.gif);
   display: block;
   height: 14px;
   background-position: left;
@@ -460,7 +460,7 @@ table.list a.toptext:hover {
   text-decoration: underline;
 }
 table.list td.listtitle {
-  background-image: url(IMG_TITLE_TABLE);
+  background-image: url(IMG_TITLE_TABLE.gif);
   font-size: 11px;
   white-space: nowrap;
   line-height: 25px;
@@ -484,7 +484,7 @@ table.list td.listtitle a {
   padding: 0 9px 0 6px;
 }
 table.list td.listtitle b a {
-  background-image: url(IMG_COLSORT);
+  background-image: url(IMG_COLSORT.gif);
   background-position: right center;
   background-repeat: no-repeat;
 }
@@ -502,7 +502,7 @@ table.list td.bold {
   font-weight: bold;
 }
 table.list td.raquot {
-  background-image: url(IMG_DOT_L);
+  background-image: url(IMG_DOT_L.gif);
   background-position: 3px center;
   background-repeat: no-repeat;
   text-indent: 14px;
@@ -539,19 +539,19 @@ table.list td.list2 a, table.list td.list a {
   color: #005a9d;
 }
 table.list td.reseller, table.list td.user, table.list td.admin {
-  background-image: url(IMG_LIST_RESELLER);
+  background-image: url(IMG_LIST_RESELLER.gif);
   background-position: 3px center;
   background-repeat: no-repeat;
   text-indent: 14px;
 }
-table.list td.user { background-image: url(IMG_LIST_USER);}
-table.list td.reseller { background-image: url(IMG_LIST_RESELLER);}
-table.list td.admin { background-image: url(IMG_LIST_ADMIN);}
+table.list td.user { background-image: url(IMG_LIST_USER.gif);}
+table.list td.reseller { background-image: url(IMG_LIST_RESELLER.gif);}
+table.list td.admin { background-image: url(IMG_LIST_ADMIN.gif);}
 
 table.list tr.Suspended td.admin, 
 table.list tr.Suspended td.user, 
 table.list tr.Suspended td.reseller {
-  background-image: url(IMG_LIST_SUSPENDED);
+  background-image: url(IMG_LIST_SUSPENDED.gif);
 }
 table.list td.list2 a:hover, table.list td.list a:hover {
   color: #005a9d;
@@ -565,7 +565,7 @@ table.list tr:hover td.list {
 }
 table.list .footer {
   font-size: 11px;
-  background-image: url(IMG_FOOTER_TABLE);
+  background-image: url(IMG_FOOTER_TABLE.gif);
   background-repeat: repeat-x;
   background-position: left top;
   background-color: #fcfcfc;
@@ -577,7 +577,7 @@ table.list .footer .boton, input.boton {
   -webkit-border-radius: 3px;
   border-radius: 3px;
   border: 1px solid #717171;
-  background-image: url(IMG_LIST_BOTON);
+  background-image: url(IMG_LIST_BOTON.gif);
   padding: 2px 8px;
 } 
 table.list .footer .boton.small, input.boton.small {
@@ -626,7 +626,7 @@ table.config tfoot td {
   padding: 4px;
   text-align: right;
   border-top: 1px solid #c0c0c0;
-  background-image: url(IMG_FOOTER_TABLE);
+  background-image: url(IMG_FOOTER_TABLE.gif);
   background-repeat: repeat-x;
 }
 /* config table ******************************/
@@ -659,7 +659,7 @@ table.config tfoot td {
   padding: 5px 0;
   text-indent: 25px;
   border-bottom: 1px solid #ccc;
-  background-image: url(IMG_PLUS16);
+  background-image: url(IMG_PLUS16.gif);
   background-position: left center;
   background-repeat: no-repeat;
 }
@@ -676,7 +676,7 @@ table.config tfoot td {
   color: #000;
   font-weight: bold;
   text-indent: 25px;
-  background-image: url(IMG_TIT_ARROW);
+  background-image: url(IMG_TIT_ARROW.gif);
   background-position: left center;
   background-repeat: no-repeat;
   display: block;
@@ -811,12 +811,12 @@ div#resultDetails, div#resultDetails2 {
   padding-left: 40px;
 }
 div#result.error {
-  background-image: url(IMG_RES_ERROR);
+  background-image: url(IMG_RES_ERROR.gif);
   background-position: left top;
   background-repeat: no-repeat;
 }
 div#result.succ2 {
-  background-image: url(IMG_RES_SUCC);
+  background-image: url(IMG_RES_SUCC.gif);
   background-position: left top;
   background-repeat: no-repeat;
 }

@@ -7,12 +7,12 @@
  * @link http://www.loveyu.org/1415.html
  *
  */
-set_time_limit(0);//设置超时时间，0为不限，服从系统设置
+@set_time_limit(0);//设置超时时间，0为不限，服从系统设置
 //error_reporting(E_ALL ^ E_NOTICE);//不提示NOTICE消息
 error_reporting(E_ALL);//提示所有消息
 $password=md5('123456');//设置密码的MD5值
 $appname = 'PHP文件管理';//程序名
-$version = '2.03';//程序版本
+$version = '2.05';//程序版本
 $httpdownmax = '20971520';//远程下载文件最大文件限制B，20M=20971520B
 $max_up_number='20';//一次最多允许上传的文件个数
 date_default_timezone_set('PRC');//设置时区，当前为北京时间
@@ -24,4 +24,10 @@ $runtime->start();//计时
 include_once ('strip_quotes_gpc.sub.php');//包含将提交信息中的转移符号去掉
 include_once ('password.php');//包含密码文档
 include_once ('function.php');//包含函数文件
+//邮件发送配置
+$smtp_port=465;//邮件发送端口
+$stmp_host="smtp.qq.com";//邮件服务器地址
+$smtp_username="";//邮件用户名
+$smtp_password="";//邮箱密码
+$smtp_ssl="ssl";
 ?>

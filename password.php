@@ -1,5 +1,5 @@
 <?php
-$page_now="http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
+$page_now="http://".$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'];
 $postpwd=@$_POST['pwd'];
 if ($postpwd != null) {
 if (md5($postpwd) == $password) {

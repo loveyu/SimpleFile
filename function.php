@@ -13,34 +13,36 @@
     #输出页尾
     global $appname;//定义两个全局变量
     global $version;
-    echo "<hr>\n<p>&copy; 2011 <a href=\"http://www.loveyu.org/\">loveyu.org</a>&nbsp;$appname($version) All Rights Reserved.</p>\n</html>";
+    echo "<hr>\n<p>&copy;2011 <a href=\"http://www.loveyu.org/\">loveyu.org</a> $appname($version) All Rights Reserved.</p>\n</html>";
     exit;
  }
 
  function hostpath() {
     #获取当前目录网址
-    $host = $_SERVER['SERVER_NAME'];//获取服务器名
+    $host = $_SERVER['HTTP_HOST'];//获取服务器名
     $path = $_SERVER['SCRIPT_NAME'];//页面脚本相对服务器路径
     $path = dirname($path);//去除文件名
-    if ($path == "/")$path = "";//判断为根目录的情况，如果是的就输出空
+    if ($path == "/" || $path=="\\")$path = "";//判断为根目录的情况，如果是的就输出空
     $urlpath = "http://"."$host"."$path"."/";//获取网址
+	
     return $urlpath;
  }
  function rootpath() {
     #获取当前页面的绝对目录
     $path = $_SERVER['SCRIPT_FILENAME'];//获取文件绝对目录
     $path = dirname($path);
-    if ($path == "/")$path = "";
+    if ($path == "/" || $path=="\\")$path = "";
     $rootpath = "$path"."/";
     return $rootpath;
  }
  function dirinfo($path){
-	$filedata = glob("$path"."/*");
-    asort($filedata);
+	$filedata = glob("$path"."/*"); 
 	$d=0;
-	foreach ($filedata as $id => $name){
+	if(is_array($filedata)){
+	foreach($filedata as $id => $name){
 	if(is_dir($name))$d+=1;
 	@$i+=1;
+	}
 	}
 	$dirinfo=array();
 	$dirinfo['dir']=$d;

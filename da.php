@@ -20,7 +20,7 @@
       <div id="top_user">
         <a href="index.php">主页</a> | <a href="?action=logout">登出</a>
         <br />
-        欢迎访问 <a href="http://www.loveyu.org/"><b>恋羽日记</b></a>
+        欢迎访问 <a href="http://www.loveyu.org"><b>loveyu.org</b></a>
       </div>
       <div id="top_logo" style="color:#fff;font-size;14px;font-weight:bold;padding-top:10px;padding-left:4px;height: 35px !important;">文件管理器</div>
     </div>
@@ -30,6 +30,7 @@
         <a href="modify.php?path=config.php&coding=UTF-8" class="lpass" style="opacity: 0.8; height: 25px; margin-top: 0px; line-height: 25px; display: block; ">密码</a>
         <a href="cmd.php" target="_blank" class="lhelp">执行代码</a>
 		<a href="simple.php" class="lhome">原始面板</a>
+		<a href="mail_write.php" class="lhome">发送邮件</a>
 		<a href="index.php?da=1" class="lhome">首页切换</a>
       </div>
     </div>
@@ -51,7 +52,20 @@ $filedata=@array_coding_to_utf8($filedata,$system_coding);//转换文件数组
 $imagearray=array('jpg','JPG','jpeg','JPEG','gif','GIF','png','PNG','bmp','BMP','RGB','rgb');//建立一个图片后缀数组
 $textarray=array('php','js','css','asp','txt','php5','sh','bat','c','html','htm','conf','config','wml','xhtml','xhtm','log','ini','inc','con','cfg','jsp','phtml','java','xml','bsh','py','pm','pl','sql','vb','vbs','tex','nfo');//建立一个图片后缀数组
 ?>
-  <div class="pageTit"><span>文件管理</span>» <a class="tree" href="index.php">文件管理</a> » <a class="tree" href=""><?php echo $path?></a><?php echo $nopross?></div>
+  <div class="pageTit"><span>文件管理</span>» <a class="tree" href="index.php">文件管理</a> » 
+<?php
+$path_dir_list=substr($path,0,-1);
+$path_array=explode("/",$path_dir_list);
+foreach ($path_array as $id => $name){
+if($name!="/"){
+echo "<a class=\"tree\" href=\"?path=";
+for($i=0;$i<=$id;$i++)
+echo rawurlencode(mb_convert_encoding($path_array["$i"]."/",$system_coding,'UTF-8'));
+echo "\">$name</a>/";
+}
+} 
+echo $nopross
+?></div>
 
   <div id="tfiles" style="margin-bottom: 15px;">
     <table class="list" cellpadding="3" cellspacing="0">
@@ -164,7 +178,7 @@ if($filetype!='dir'){?>
 if($fileext=='zip'){?><a href="unzip2.php?path=<?php echo rawurlencode($filename)?>&form=da">解压</a> | <?php }
 if(in_array($fileext,$textarray)){?><a href="modify.php?path=<?php echo $filename?>&coding=UTF-8" title="编辑文档">编辑</a> | <a href="readfile.php?path=<?php echo $filename?>&coding=UTF-8" title="查看文档">查看</a> | <?php }
 if(in_array($fileext,$imagearray)){?><a href="readfile.php?path=<?php echo $filename?>&type=image&coding=UTF-8" title="查看图片">查看图片</a> | <?php }?>
-<a href="zip3.php?path=<?php echo $filename?>&onefsf0">压缩</a><br>
+<a href="zip3.php?path=<?php echo $filename?>&onefsf0">压缩</a> | <a href="mail_write.php?file=<?php echo $filename?>&sub=<?php echo basename($filename)?>&body=<?php echo "发送文件".$filename?>">发送</a><br>
 <a href="rename.php?path=<?php echo $filename?>&one=0">重命名</a> | <a href="copy3.php?path=<?php echo $filename?>&ccfgb">复制</a> | 
 <a href="delete.php?path=<?php echo $filename?>&ofhgg">删除</a>
  </td>
@@ -265,7 +279,7 @@ $(function(){
     <div class="cleft"></div><div class="cright"></div><div class="cf"></div>
   </div>
   <div id="main_bottom">
-    <a class="white" href="http://www.loveyu.org/">恋羽日记</a> <?php echo $appname."($version)"?>
+    <a class="white" href="http://www.loveyu.org"><b>loveyu.org</b></a> <?php echo $appname."($version)"?> <a class="white" href="https://sourceforge.net/projects/my-php/php-file-manage/">更新</a>
   </div>
 </div>
 </center>
