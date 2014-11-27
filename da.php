@@ -98,12 +98,12 @@ function selectAll(select)
 <tr class="trList">
  <td class="list"><a href="?path=<?php echo $lastpath ?>/"><img alt="Directory" src="./js/folder.jpg" border="0"></a></td>
  <td class="list"><a href="?path=<?php echo $lastpath ?>/">../ 返回上级</a></td>
- <td class="list"><a href="未知连接"></a>大小暂不计算</td>
+ <td class="list"><a href="#大小"></a></td>
  <td class="list"><?php echo substr(sprintf('%o', @fileperms(dirname($path))), -4)?></td>
  <td class="list"></td>
  <td class="list"><a href="?path=<?php echo $lastpath ?>"></a><span style="font-size:8pt;"><?php echo @date("Y年m月d日.H:i.s",@filemtime(dirname($path)))?></span></td>
- <td class="list"><?php echo @fileowner(dirname($path))?></td>
- <td class="list"><?php echo @filegroup(dirname($path))?></td>
+ <td class="list"><?php //echo @fileowner(dirname($path))?></td>
+ <td class="list"><?php //echo @filegroup(dirname($path))?></td>
  <td class="list" align="center"></td>
 </tr>
 <?php
@@ -120,7 +120,8 @@ if($filetype=='dir'){?>
 <tr class="trList hover">
   <td class="list2"><a href="?path=<?php echo $urlfilename?>/"><img alt="Directory" src="./js/folder.jpg" border="0"></a></td>
   <td class="list2"><a href="?path=<?php echo $urlfilename?>/"><?php echo basename($filename)?></a></td>
-  <td class="list2"><a href="未知连接"></a>大小暂不计算</td>
+  <td class="list2"><a href="未知连接"></a><?php $dirinfo=dirinfo($filename_old);
+  echo 'FILE '.$dirinfo['file'].'<br />DIR '.$dirinfo['dir']?></td>
   <td class="list2"><?php echo $perms?></td>
   <td class="list2"><a href="zip3.php?path=<?php echo $filename?>">压缩</a><br><a href="rename.php?one=0&path=<?php echo $filename?>">重命名</a> | <a href="copy3.php?path=<?php echo $filename?>">复制</a> | <a href="delete.php?path=<?php echo $filename?>">删除</a></td>
   <td class="list2"><a href=""></a><span style="font-size:8pt;"><?php echo @date("Y年m月d日.H:i.s",@filemtime($filename_old))?></span></td>

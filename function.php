@@ -34,23 +34,30 @@
     $rootpath = "$path"."/";
     return $rootpath;
  }
-
+ function dirinfo($path){
+	$filedata = glob("$path"."/*");
+    asort($filedata);
+	$d=0;
+	foreach ($filedata as $id => $name){
+	if(is_dir($name))$d+=1;
+	@$i+=1;
+	}
+	$dirinfo=array();
+	$dirinfo['dir']=$d;
+	$dirinfo['file']=@$i-$d;
+	return $dirinfo;
+ }
+ 
  function newfilesize($fname) {
     #判断文件大小增强
-    $size = filesize($fname);
-    if ($size < 1024)
-       $newsize = $size."B";
-    if ($size >= 1024 &&
-       $size < 1048576)
-       $newsize = round($size /(1024),2)."KB";
-    if ($size >= 1048576 &&
-       $size < 1073741824)
-       $newsize = round($size / (1024 * 1024),2)."MB";
-    if ($size >= 1073741824 &&
-       $size < 1099511627776)
-       $newsize = round($size /(1024 * 1024 * 1024),2)."GB";
-    if ($size >= 1099511627776)
-       $newsize = round($size / (1024 * 1024 * 1024 *1024),2)."TB";
+	if(!is_dir($fname))$size = filesize($fname);
+    else $size=0;
+	if ($size == 0) $newsize = 0;
+    if ($size < 1024 && $size > 0)$newsize = $size."B";
+    if ($size >= 1024 && $size < 1048576)$newsize = round($size /(1024),2)."KB";
+    if ($size >= 1048576 && $size < 1073741824)$newsize = round($size / (1024 * 1024),2)."MB";
+    if ($size >= 1073741824 && $size < 1099511627776)$newsize = round($size /(1024 * 1024 * 1024),2)."GB";
+    if ($size >= 1099511627776)$newsize = round($size / (1024 * 1024 * 1024 *1024),2)."TB";
     return $newsize;
  }
 
