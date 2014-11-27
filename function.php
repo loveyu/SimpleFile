@@ -106,47 +106,7 @@ function codinglist($coding='UTF-8') {
     return $t;
  }
 
-/*未使用
-function dir2array($dir,
-$subdirs = false) {
-#获取文件夹目录下文件为数组
-$dir_data = array();
-if (!@is_dir($dir)) {
-die("This directory does not exist ($dir)");
-}
-if (!$dir_handle = @
-opendir($dir)) {
-die("Unable to open directory ($dir)");
-}
-while ($file = @
-readdir($dir_handle)) {
-if (@filetype($dir.
-$file) !== '' && $file
-!== '.') {
-if (@filetype($dir.
-$file) == 'dir' && $file
-!== '..') {
-$dir_data['folders'][$file] =
-$file;
-if ($subdirs) {
-$dir_files = dir2array($dir.
-'/'.$file.'/',true);
-$dir_data['folders'][$file] =
-$dir_files;
-}
-} else
-if ($file !== '..' &&
-$file !== '.htaccess') {
-$dir_data['files'][$file] =
-$file;
-}
-}
-}
-return $dir_data;
-}
-*/
- function array_coding_to_utf8($array,
-    $coding) {
+ function array_coding_to_utf8($array,$coding) {
     #将数组编码转换为utf-8
     if(empty($array)) return array();//判断是否为空数组，如果是的直接返回空数组
     $new_array = array();
@@ -158,7 +118,7 @@ return $dir_data;
     return $new_array;
  }
  function appmenu() {
-    echo "<input type=\"button\" value=\"后退\" onclick=\"javascript:window.history.back();\">\n</form>\n"."<hr>\n"."<a href=\"".hostpath()."\">首页</a>&nbsp;<a href=\"cmd.php\">执行代码</a>&nbsp;<a href=\"view.php\">查看文件</a>&nbsp;<a href=\"list.php?action=upfile\">上传文件</a>&nbsp;<a href=\"?action=logout\">退出</a>\n";
+    echo "<input type=\"button\" value=\"后退\" onclick=\"javascript:window.history.back();\">\n</form>\n"."<hr>\n"."<a href=\"".hostpath()."\">首页</a>&nbsp;<a href=\"index.php?da=1\">首页切换</a>&nbsp;<a href=\"cmd.php\">执行代码</a>&nbsp;<a href=\"view.php\">查看文件</a>&nbsp;<a href=\"list.php?action=upfile\">上传文件</a>&nbsp;<a href=\"?action=logout\">退出</a>\n";
  }
  function httpdown($fn,$url) {
     #远程下载函数
@@ -225,29 +185,33 @@ return $dir_data;
     }
     @closedir($path);
  }
- function Xchmod($path,$filemod,$dirmod,$show='0'){
- $filemod1=octdec($filemod);
- $dirmod1=octdec($dirmod);
+ function Xchmod($path,$filemod,$dirmod,$show='0',$re){
+    global $system_coding;
+    $filemod1=octdec($filemod);
+    $dirmod1=octdec($dirmod);
+ 	$path2=mb_convert_encoding($path,'UTF-8',$system_coding);
     if(!is_dir($path)){
     if(!chmod($path,$filemod1)){
-    echo "<font color=\"red\">文件$path 修改权限为$filemod 失败！</font><br />\n";
+    echo "<font color=\"blue\">文件</font><font color=\"red\"> $path2 修改权限为$filemod 失败！</font><br />\n";
     }else{
     if ($show=='1')
-    echo "<font color=\"blue\">文件$path 修改权限为$filemod 成功！</font><br />\n";
+    echo "<font color=\"red\">文件</font><font color=\"blue\"> $path2 修改权限为$filemod 成功！</font><br />\n";
     }
     }else{
     if(!chmod($path,$dirmod1)){
-    echo "<font color=\"red\">目录$path 修改权限为$dirmod 失败！</font><br />\n";
+    echo "<font color=\"red\">目录 $path2 修改权限为$dirmod 失败！</font><br />\n";
     }else{
     if ($show=='1')
-    echo "<font color=\"blue\">目录$path 修改权限为$dirmod 成功！</font><br />\n";
+    echo "<font color=\"blue\">目录 $path2 修改权限为$dirmod 成功！</font><br />\n";
     }
     $handle=dir($path);
+	if($re=='yes'){
     while($entry=$handle->read()) {
         if(($entry!=".")&&($entry!="..")){
-                Xchmod($path.'/'.$entry,$filemod,$dirmod,$show);
+                Xchmod($path.'/'.$entry,$filemod,$dirmod,$show,$re);
         }
     }
+	}
  }
  }
 ?>

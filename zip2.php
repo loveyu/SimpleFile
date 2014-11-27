@@ -1,9 +1,19 @@
 <?php
 include_once ('config.php');
 appheader('-zip压缩状态');
-$path=$_GET['path'];
-$zippath=$_GET['zip'];
-$filedata=$_POST;
+if(@$path==null && @$zippath==null){
+$path=@$_GET['path'];
+$zippath=@$_GET['zip'];
+}
+if($zippath==null){
+$filename=basename(@$_POST['path']);
+$filedata=array();
+$filedata['1']=$filename;
+$path=dirname(@$_POST['path']);
+$zippath=@$_POST['zip'];
+}else{
+$filedata=@$_POST;
+}
 asort($filedata);
 $sy_path=mb_convert_encoding($path,$system_coding,'UTF-8');
 $sy_zippath=mb_convert_encoding($zippath,$system_coding,'UTF-8');

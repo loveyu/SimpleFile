@@ -1,8 +1,13 @@
 <?php
 include_once ('config.php');
 appheader('-建立新文件夹',"-状态");
-$newdirlist = $_POST;
-$path=$_GET['path'];
+$newdirlist = @$_POST;
+$path=@$_GET['path'];
+if($path==null){
+$newdirlist=array();
+$newdirlist['1']=$_POST['name'];
+$path=$_POST['path'];
+}
 $sy_path=mb_convert_encoding($path,$system_coding,'UTF-8');
 asort($newdirlist);
 foreach ($newdirlist as $id => $dirname) {

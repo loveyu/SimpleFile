@@ -18,6 +18,7 @@ exit;
 }
 if (@$_GET['action'] == "logout") {
 setcookie('fm:pwd', null);
+setcookie('fm:da',null);
 echo "<html>\n<title>jumping...</title>\n<meta http-equiv=\"refresh\" content=\"2;URL=$page_now\">
 <font>Cookie has been deleted, the page refreshes automatically after two seconds.</font>\n</html>";
 exit;

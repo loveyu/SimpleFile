@@ -1,8 +1,13 @@
 <?php
 include_once ('config.php');
 appheader('-复制文件状态');
-$todir=$_GET['todir'];
-$filelist=$_POST;
+$todir=@$_GET['todir'];
+if($todir==null){
+$todir=@$_POST['todir']."/";
+$filelist=@$_GET;
+}else{
+$filelist=@$_POST;
+}
 foreach ($filelist as $id => $filepath){
     $filepath_old=mb_convert_encoding($filepath,$system_coding,'UTF-8');
     $todir_old=mb_convert_encoding($todir,$system_coding,'UTF-8');
