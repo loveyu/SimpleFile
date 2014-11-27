@@ -5,7 +5,7 @@
 include_once ('config.php');
 appheader('-查看文件目录');
 $path = @$_GET['path'];//获取请求文件夹的系统编码目录名
-if ($path==null)$path=dirname(rootpath().'/');//当目录请求为空时指定一个目录为上级目录
+if ($path==null)$path=dirname(rootpath()).'/';//当目录请求为空时指定一个目录为上级目录
 if (!@file_exists($path)) {//判断路径是否可用，否则直接退出
 echo "该路径\"$path\"不存在或无访问权限！";
 appmenu();
