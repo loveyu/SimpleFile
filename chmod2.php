@@ -8,7 +8,7 @@
     foreach ($_POST as $id => $new) {
         $filepath = $_GET["$id"];//通过get方法获得要修改权限的文件名
         $sy_filepath=mb_convert_encoding($filepath,$system_coding,'UTF-8');//转换为系统编码
-        $new2=decoct($new);
+        $new2=octdec($new);
         if (!chmod($sy_filepath,$new2)){
             echo "<font color=\"red\">\"$filepath\"修改权限为\"$new\"失败！</font><hr>\n";
         }else{

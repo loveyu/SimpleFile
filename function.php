@@ -224,8 +224,8 @@ return $dir_data;
     @closedir($path);
  }
  function Xchmod($path,$filemod,$dirmod,$show='0'){
- $filemod1=decoct($filemod);
- $dirmod1=decoct($dirmod);
+ $filemod1=octdec($filemod);
+ $dirmod1=octdec($dirmod);
     if(!is_dir($path)){
     if(!chmod($path,$filemod1)){
     echo "<font color=\"red\">文件$path 修改权限为$filemod 失败！</font><br />\n";
