@@ -36,6 +36,7 @@ echo '<input type="radio" name="action" value="view" />查看文件
 <input type="radio" name="action" value="unzip" />unzip操作
 <input type="radio" name="action" value="zip" />zip操作
 <input type="radio" name="action" value="move" />移动文件
+<input type="radio" name="action" value="xchmod" />递归权限修改
 <hr>
 <input type="submit" value="提交">&nbsp;';
 appmenu();//底部菜单

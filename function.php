@@ -39,26 +39,18 @@
     #判断文件大小增强
     $size = filesize($fname);
     if ($size < 1024)
-       $newsize = $size.
-          "B";
+       $newsize = $size."B";
     if ($size >= 1024 &&
        $size < 1048576)
-       $newsize = round($size /
-          (1024),2)."KB";
+       $newsize = round($size /(1024),2)."KB";
     if ($size >= 1048576 &&
        $size < 1073741824)
-       $newsize = round($size /
-          (1024 * 1024),2).
-          "MB";
+       $newsize = round($size / (1024 * 1024),2)."MB";
     if ($size >= 1073741824 &&
        $size < 1099511627776)
-       $newsize = round($size /
-          (1024 * 1024 * 1024),
-          2)."GB";
+       $newsize = round($size /(1024 * 1024 * 1024),2)."GB";
     if ($size >= 1099511627776)
-       $newsize = round($size /
-          (1024 * 1024 * 1024 *
-          1024),2)."TB";
+       $newsize = round($size / (1024 * 1024 * 1024 *1024),2)."TB";
     return $newsize;
  }
 
@@ -85,7 +77,7 @@
     }
     closedir($handle);//关闭打开的文件夹
  }
- 
+
 function codinglist($coding='UTF-8') {
     #输出一个编码选择框
     $s = "selected=\"selected\"";
@@ -230,5 +222,30 @@ return $dir_data;
          }
     }
     @closedir($path);
+ }
+ function Xchmod($path,$filemod,$dirmod,$show='0'){
+ $filemod1=decoct($filemod);
+ $dirmod1=decoct($dirmod);
+    if(!is_dir($path)){
+    if(!chmod($path,$filemod1)){
+    echo "<font color=\"red\">文件$path 修改权限为$filemod 失败！</font><br />\n";
+    }else{
+    if ($show=='1')
+    echo "<font color=\"blue\">文件$path 修改权限为$filemod 成功！</font><br />\n";
+    }
+    }else{
+    if(!chmod($path,$dirmod1)){
+    echo "<font color=\"red\">目录$path 修改权限为$dirmod 失败！</font><br />\n";
+    }else{
+    if ($show=='1')
+    echo "<font color=\"blue\">目录$path 修改权限为$dirmod 成功！</font><br />\n";
+    }
+    $handle=dir($path);
+    while($entry=$handle->read()) {
+        if(($entry!=".")&&($entry!="..")){
+                Xchmod($path.'/'.$entry,$filemod,$dirmod,$show);
+        }
+    }
+ }
  }
 ?>

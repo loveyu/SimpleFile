@@ -45,7 +45,7 @@
 	      }else{
 	       $filesize = newfilesize($filename_old);
 	       echo "$id&nbsp;<input type=\"checkbox\" name=\"$action$id\" value=\"$filename\"/>&nbsp;&lt;$filetype"."文件&gt;$filename(<font color=\"blue\">$filesize</font>)$perms<hr>\n";
-	      }   
+	      }
 	   }
        echo '<input type="submit" value="提交">'."\n";
 	}
@@ -64,7 +64,7 @@
             $pathinfo=pathinfo($filename_old);
             if (@$pathinfo['extension']=='zip'){
                 $filesize = newfilesize($filename_old);
-                echo "$id&nbsp;&lt;ZIP&gt;<input type=\"radio\" name=\"zipfile\" value=\"$filename\" />$filename(<font color=\"blue\">$filesize</font>)<hr>\n";                
+                echo "$id&nbsp;&lt;ZIP&gt;<input type=\"radio\" name=\"zipfile\" value=\"$filename\" />$filename(<font color=\"blue\">$filesize</font>)<hr>\n";
             }
           }
 	   }
@@ -103,7 +103,18 @@
     echo "0&nbsp;<input type=\"radio\" name=\"todir\" value=\"$path\" checked/>$path(当前目录)<hr>\n";
     echo "选择你要复制到的文件目录&nbsp;<input type=\"submit\" value=\"去选择要复制的文件\">\n";
     }
-    
+    if($action=='xchmod'){
+        echo "选择你要修改权限的目录:<br />该操作会进行递归修改，只支持目录<br />\n<form method=\"get\" action=\"xchmod.php\">\n";
+	   foreach ($filedata as $id => $filename) {
+	     $filename_old=mb_convert_encoding($filename,$system_coding,'UTF-8');
+         $urlfilename=rawurlencode($filename_old."/");
+        $id = $id + 1;
+	      if (is_dir($filename_old)) {
+	       echo "$id<input type=\"radio\" name=\"path\" value=\"$filename\" /><a href=\"list.php?path=$urlfilename&action=xchmod\" title=\"进入该目录\">$filename</a><hr>\n";
+           }
+    }
+    echo "文件权限：<input name=\"filemod\" value=\"0644\"><br />\n目录权限：<input name=\"dirmod\" value=\"0755\"><br />\n显示列表:<input type=\"radio\" name=\"show\" value=\"1\"/>是\n<input type=\"radio\" name=\"show\" value=\"0\" checked/>否<br />\n<input type=\"submit\" value=\"开始修改\">\n";
+    }
    	if ($action == 'modify') {
 	   echo "<form method=\"post\" action=\"modify.php\">\n";
 	   foreach ($filedata as $id => $filename) {
@@ -111,13 +122,13 @@
          $urlfilename=rawurlencode($filename_old);
 	      $id+=1;
 	      if (is_dir($filename_old))echo "$id&nbsp;&lt;目录&gt;&nbsp;<a href=\"list.php?path=$urlfilename/&action=modify\" title=\"进入该目录\">$filename/</a><hr>\n";
-          else echo "$id<input type=\"radio\" name=\"filename\" value=\"$filename\" />&nbsp;$filename(<font color=\"blue\">".newfilesize($filename_old)."</font>)<hr>\n";                
+          else echo "$id<input type=\"radio\" name=\"filename\" value=\"$filename\" />&nbsp;$filename(<font color=\"blue\">".newfilesize($filename_old)."</font>)<hr>\n";
           }
        echo "选择文件编码类型:";
        codinglist();//输出一个编码列表
        echo "<input type=\"submit\" value=\"提交\">&nbsp;\n";
 	}
-    } 
+    }
 	appmenu();
     $runtime->stop();
     echo "<hr>页面执行时间: ".$runtime->spent()."秒.\n";
