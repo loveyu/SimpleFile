@@ -11,7 +11,7 @@ if ($number>$max_up_number){
     echo "一次最多允许上传\"$max_up_number\"个文件<hr>\n";
     $number=$max_up_number;
 }
-echo "文件将上传到\"$path\"<hr>\n<form method=\"post\" action=\"upfile.php\">\n<input type=\"hidden\" name=\"filedir\" value=\"$path\">\n上传文件列表:<input type=\"text\" name=\"number\" value=\"$number\" size=\"2\">\n<input type=\"submit\" value=\"修改数量\">
+echo "文件将上传到\"$path\"<hr>\n<form method=\"post\" action=\"upfile.php\">\n<input type=\"hidden\" name=\"filedir\" value=\"$path\">\n上传文件列表:<input type=\"text\" name=\"number\" value=\"$number\" size=\"2\">\n<input type=\"submit\" value=\"修改数量\">\n</form>
 <hr>\n<form enctype=\"multipart/form-data\" method=\"post\" action=\"upfile2.php?path=$path\">\n";
 for ($n=1;$n<=$number;$n++){
     $n0=$n-1;

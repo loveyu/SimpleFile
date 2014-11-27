@@ -49,7 +49,7 @@ $filedata = glob("$path"."*");//获取原始目录数组
 $path=mb_convert_encoding($path,'UTF-8',$system_coding);//将目录由系统编码转换为UTF-8编码
 $filedata=@array_coding_to_utf8($filedata,$system_coding);//转换文件数组
 $imagearray=array('jpg','JPG','jpeg','JPEG','gif','GIF','png','PNG','bmp','BMP','RGB','rgb');//建立一个图片后缀数组
-$textarray=array('php','js','css','asp','txt','php5','sh','bat','c','html','htm','wml','xhtml','xhtm','log','ini','inc','con','cfg','jsp','phtml','java','xml','bsh','py','pm','pl','sql','vb','vbs','tex','nfo');//建立一个图片后缀数组
+$textarray=array('php','js','css','asp','txt','php5','sh','bat','c','html','htm','conf','config',,,'wml','xhtml','xhtm','log','ini','inc','con','cfg','jsp','phtml','java','xml','bsh','py','pm','pl','sql','vb','vbs','tex','nfo');//建立一个图片后缀数组
 ?>
   <div class="pageTit"><span>文件管理</span>» <a class="tree" href="index.php">文件管理</a> » <a class="tree" href=""><?php echo $path?></a><?php echo $nopross?></div>
 
@@ -106,13 +106,16 @@ function selectAll(select)
  <td class="list"><?php echo @filegroup(dirname($path))?></td>
  <td class="list" align="center"></td>
 </tr>
-
 <?php
 foreach ($filedata as $id => $filename) {//历遍数组
     $filename_old=mb_convert_encoding($filename,$system_coding,'UTF-8');//将文件名转换为系统编码
     $urlfilename=rawurlencode($filename_old);//由系统编码转换为url编码
     $filetype = filetype($filename_old);//获取文件类型呢
     $perms = substr(sprintf('%o', fileperms($filename_old)), -4);//获取文件权限
+	if (PHP_OS!='WIN32' && PHP_OS!='WINNT'){
+	$fileowner=@posix_getpwuid(@fileowner($filename_old));
+	$filegroup=@posix_getpwuid(@filegroup($filename_old));
+	}
 if($filetype=='dir'){?>
 <tr class="trList hover">
   <td class="list2"><a href="?path=<?php echo $urlfilename?>/"><img alt="Directory" src="./js/folder.jpg" border="0"></a></td>
@@ -121,8 +124,8 @@ if($filetype=='dir'){?>
   <td class="list2"><?php echo $perms?></td>
   <td class="list2"><a href="zip3.php?path=<?php echo $filename?>">压缩</a><br><a href="rename.php?one=0&path=<?php echo $filename?>">重命名</a> | <a href="copy3.php?path=<?php echo $filename?>">复制</a> | <a href="delete.php?path=<?php echo $filename?>">删除</a></td>
   <td class="list2"><a href=""></a><span style="font-size:8pt;"><?php echo @date("Y年m月d日.H:i.s",@filemtime($filename_old))?></span></td>
-  <td class="list2"><?php echo @fileowner($filename_old)?></td>
-  <td class="list2"><?php echo @filegroup($filename_old)?></td>
+  <td class="list2"><?php echo @$fileowner['name']?></td>
+  <td class="list2"><?php echo @$filegroup['name']?></td>
   <td class="list2" align="center"><input type="checkbox" name="select<?php echo $id?>" value="<?php echo $filename ?>"></td>
 </tr>
 <?php
@@ -137,6 +140,10 @@ foreach ($filedata as $id => $filename) {//历遍数组
 	$newfilesize=newfilesize($filename_old);
 	$pathinfo=pathinfo($filename_old);//获取文件信息
     $fileext=@$pathinfo['extension'];//获取文件后缀
+	if (PHP_OS!='WIN32' && PHP_OS!='WINNT'){
+	$fileowner=@posix_getpwuid(@fileowner($filename_old));
+	$filegroup=@posix_getpwuid(@filegroup($filename_old));
+	}
 if($filetype!='dir'){?>
 <tr title="大小: <?php echo filesize($filename_old)?>
 
@@ -161,8 +168,8 @@ if(in_array($fileext,$imagearray)){?><a href="readfile.php?path=<?php echo $file
 <a href="delete.php?path=<?php echo $filename?>&ofhgg">删除</a>
  </td>
  <td class="list2"><a href=""></a><span style="font-size:8pt;"><?php echo @date("Y年m月d日.H:i.s",@filemtime($filename_old))?></span></td>
- <td class="list2"><?php echo @fileowner($filename_old)?></td>
- <td class="list2"><?php echo @filegroup($filename_old)?></td>
+  <td class="list2"><?php echo @$fileowner['name']?></td>
+  <td class="list2"><?php echo @$filegroup['name']?></td>
  <td class="list2" align="center"><input type="checkbox" name="select<?php echo $id?>" value="<?php echo $filename?>"></td>
 </tr>
 <?php }}?>
