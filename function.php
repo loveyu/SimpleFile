@@ -19,7 +19,7 @@
 
  function hostpath() {
     #获取当前目录网址
-    $host = $_SERVER['HTTP_HOST'];//获取服务器名
+    $host = $_SERVER['SERVER_NAME'];//获取服务器名
     $path = $_SERVER['SCRIPT_NAME'];//页面脚本相对服务器路径
     $path = dirname($path);//去除文件名
     if ($path == "/" || $path=="\\")$path = "";//判断为根目录的情况，如果是的就输出空

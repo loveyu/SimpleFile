@@ -1,4 +1,4 @@
-<?php
+<?
 $page_now2="http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
 if(@$_GET['da']=="1"){
 if($_COOKIE['fm:da']==null)setcookie('fm:da',"1",time()+60*60*24*7);
